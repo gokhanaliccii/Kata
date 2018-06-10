@@ -23,13 +23,13 @@ import static org.junit.Assert.*;
  * Updated Price Table
  * New------ More Than 3 day Apply %10 discount
  * Horror--- More Than 5 day Apply %15 discount
- * Comedy--- More Than 2 day Apply %3 discount
+ * Comedy--- More Than 2 day Apply %30 discount
  */
 
 
 public class RentalShopTest {
 
-    @Test//20
+    @Test
     public void should_CalculateNewMoviePriceCorrectly() {
         final double expectedPrice = 18d;
         RentalShop rentalShop = new RentalShop();
@@ -49,7 +49,7 @@ public class RentalShopTest {
 
     @Test
     public void should_CalculateFantasticMovieRentPriceCorrectly() {
-        final double expectedPrice = 29.1;
+        final double expectedPrice = 21;
         RentalShop rentalShop = new RentalShop();
         double actualPrice = rentalShop.calculatePrice(COMEDY, 5);
 
