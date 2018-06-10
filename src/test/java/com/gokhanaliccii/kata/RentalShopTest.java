@@ -3,6 +3,7 @@ package com.gokhanaliccii.kata;
 import org.hamcrest.core.IsEqual;
 import org.junit.Test;
 
+import static com.gokhanaliccii.kata.MovieGenres.HORROR;
 import static com.gokhanaliccii.kata.MovieGenres.NEW;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.*;
@@ -24,5 +25,13 @@ public class RentalShopTest {
         assertThat(actualPrice, equalTo(expectedPrice));
     }
 
+    @Test
+    public void should_CalculateHorrorMovieRentPriceCorrectly(){
+        final double expectedPrice = 10d;
+        RentalShop rentalShop = new RentalShop();
+        double actualPrice = rentalShop.calculatePrice(HORROR,5);
+
+        assertThat(actualPrice, equalTo(expectedPrice));
+    }
 
 }

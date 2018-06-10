@@ -13,7 +13,8 @@ public class RentalShop {
     public double calculatePrice(MovieGenres genres, int rentedDay) {
         if (genres == MovieGenres.NEW)
             return rentedDay * 4;
-
+        else if (genres == MovieGenres.HORROR)
+            return rentedDay * 2;
 
         return 0;
     }
