@@ -15,45 +15,43 @@ import static org.junit.Assert.*;
  * New ----------> 4 lira for each day
  * Horror -------> 2 lira for each day
  * Comedy ----> 6 lira for each day
- *
+ * <p>
  * [Step2]
  * They came with new request. They decided
  * discount if user's will rent movie more than specified
- *
+ * <p>
  * Updated Price Table
  * New------ More Than 3 day Apply %10 discount
  * Horror--- More Than 5 day Apply %15 discount
  * Comedy--- More Than 2 day Apply %3 discount
- *
  */
-
 
 
 public class RentalShopTest {
 
-    @Test
+    @Test//20
     public void should_CalculateNewMoviePriceCorrectly() {
-        final double expectedPrice = 8d;
+        final double expectedPrice = 18d;
         RentalShop rentalShop = new RentalShop();
-        double actualPrice = rentalShop.calculatePrice(NEW,2);
+        double actualPrice = rentalShop.calculatePrice(NEW, 5);
 
         assertThat(actualPrice, equalTo(expectedPrice));
     }
 
     @Test
-    public void should_CalculateHorrorMovieRentPriceCorrectly(){
-        final double expectedPrice = 10d;
+    public void should_CalculateHorrorMovieRentPriceCorrectly() {
+        final double expectedPrice = 17d;
         RentalShop rentalShop = new RentalShop();
-        double actualPrice = rentalShop.calculatePrice(HORROR,5);
+        double actualPrice = rentalShop.calculatePrice(HORROR, 10);
 
         assertThat(actualPrice, equalTo(expectedPrice));
     }
 
     @Test
-    public void should_CalculateFantasticMovieRentPriceCorrectly(){
-        final double expectedPrice = 6;
+    public void should_CalculateFantasticMovieRentPriceCorrectly() {
+        final double expectedPrice = 29.1;
         RentalShop rentalShop = new RentalShop();
-        double actualPrice = rentalShop.calculatePrice(COMEDY,1);
+        double actualPrice = rentalShop.calculatePrice(COMEDY, 5);
 
         assertThat(actualPrice, equalTo(expectedPrice));
     }
