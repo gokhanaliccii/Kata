@@ -14,33 +14,23 @@ import static com.gokhanaliccii.kata.MovieGenres.NEW;
 public class RentalShop {
 
     public double calculatePrice(MovieGenres genres, int rentedDay) {
-        if (NEW == genres) {
-            double price = rentedDay * 4;
+        double price = genres.getRentalPrice() * rentedDay;
 
+
+        if (NEW == genres) {
             if (rentedDay > 3) {
                 price = price * 0.9;
             }
-
-            return price;
-        }else if (HORROR == genres) {
-            double price = rentedDay * 2;
-
+        } else if (HORROR == genres) {
             if (rentedDay > 5) {
                 price = price * 0.85;
             }
-
-            return price;
-        }else if (COMEDY == genres) {
-            double price = rentedDay * 6;
-
+        } else if (COMEDY == genres) {
             if (rentedDay > 2) {
                 price = price * 0.7;
             }
-
-            return price;
         }
 
-
-        return genres.getRentalPrice() * rentedDay;
+        return price;
     }
 }
