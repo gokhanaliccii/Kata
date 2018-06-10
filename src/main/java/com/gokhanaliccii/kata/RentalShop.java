@@ -1,5 +1,6 @@
 package com.gokhanaliccii.kata;
 
+import static com.gokhanaliccii.kata.MovieGenres.HORROR;
 import static com.gokhanaliccii.kata.MovieGenres.NEW;
 
 /**
@@ -17,6 +18,14 @@ public class RentalShop {
 
             if (rentedDay > 3) {
                 price = price * 0.9;
+            }
+
+            return price;
+        }else if (HORROR == genres) {
+            double price = rentedDay * 2;
+
+            if (rentedDay > 5) {
+                price = price * 0.85;
             }
 
             return price;
