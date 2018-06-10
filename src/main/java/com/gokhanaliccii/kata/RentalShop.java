@@ -9,15 +9,7 @@ package com.gokhanaliccii.kata;
  */
 public class RentalShop {
 
-
     public double calculatePrice(MovieGenres genres, int rentedDay) {
-        if (genres == MovieGenres.NEW)
-            return rentedDay * 4;
-        else if (genres == MovieGenres.HORROR)
-            return rentedDay * 2;
-        else if (genres == MovieGenres.COMEDY)
-            return rentedDay * 6;
-
-        return 0;
+        return genres.getRentalPrice() * rentedDay;
     }
 }
