@@ -1,5 +1,7 @@
 package com.gokhanaliccii.kata;
 
+import static com.gokhanaliccii.kata.MovieGenres.NEW;
+
 /**
  * Movie Genres  [New, Horror, Fantastic]
  * Price table
@@ -10,6 +12,17 @@ package com.gokhanaliccii.kata;
 public class RentalShop {
 
     public double calculatePrice(MovieGenres genres, int rentedDay) {
+        if (NEW == genres) {
+            double price = rentedDay * 4;
+
+            if (rentedDay > 3) {
+                price = price * 0.9;
+            }
+
+            return price;
+        }
+
+
         return genres.getRentalPrice() * rentedDay;
     }
 }
