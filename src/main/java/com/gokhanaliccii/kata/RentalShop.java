@@ -5,7 +5,7 @@ package com.gokhanaliccii.kata;
  * Price table
  * New ----------> 4 lira for each day
  * Horror -------> 2 lira for each day
- * Fantastic ----> 6 lira for each day
+ * Comedy -------> 6 lira for each day
  */
 public class RentalShop {
 
@@ -15,6 +15,8 @@ public class RentalShop {
             return rentedDay * 4;
         else if (genres == MovieGenres.HORROR)
             return rentedDay * 2;
+        else if (genres == MovieGenres.COMEDY)
+            return rentedDay * 6;
 
         return 0;
     }
