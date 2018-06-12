@@ -1,4 +1,11 @@
 package com.gokhanaliccii.kata;
 
-public class MovieRepository {
+public interface MovieRepository {
+
+    double getNewMoviePrice();
+
+    double getHorrorPrice();
+
+    double getComedyPrice();
+
 }
