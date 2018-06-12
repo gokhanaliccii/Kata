@@ -1,13 +1,19 @@
 package com.gokhanaliccii.kata;
 
+import javafx.beans.binding.Bindings;
 import org.hamcrest.core.IsEqual;
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import static com.gokhanaliccii.kata.MovieGenres.COMEDY;
 import static com.gokhanaliccii.kata.MovieGenres.HORROR;
 import static com.gokhanaliccii.kata.MovieGenres.NEW;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
 
 /**
  * [Step1]
@@ -33,10 +39,26 @@ import static org.junit.Assert.*;
 
 public class RentalShopTest {
 
+    @Mock
+    public MovieRepository movieRepository;
+    @Mock
+    public MovieService movieService;
+
+    private RentalShop rentalShop;
+
+    @Before
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+
+        movieService = new MovieService(movieRepository);
+        rentalShop = new RentalShop(movieService);
+    }
+
     @Test
     public void should_CalculateNewMoviePriceCorrectly() {
+        when(movieRepository.getNewMoviePrice()).thenReturn(4d);
+
         final double expectedPrice = 18d;
-        RentalShop rentalShop = new RentalShop();
         double actualPrice = rentalShop.calculatePrice(NEW, 5);
 
         assertThat(actualPrice, equalTo(expectedPrice));
@@ -44,8 +66,9 @@ public class RentalShopTest {
 
     @Test
     public void should_CalculateHorrorMovieRentPriceCorrectly() {
+        when(movieRepository.getHorrorPrice()).thenReturn(2d);
+
         final double expectedPrice = 17d;
-        RentalShop rentalShop = new RentalShop();
         double actualPrice = rentalShop.calculatePrice(HORROR, 10);
 
         assertThat(actualPrice, equalTo(expectedPrice));
@@ -53,8 +76,9 @@ public class RentalShopTest {
 
     @Test
     public void should_CalculateFantasticMovieRentPriceCorrectly() {
+        when(movieRepository.getComedyPrice()).thenReturn(6d);
+
         final double expectedPrice = 21;
-        RentalShop rentalShop = new RentalShop();
         double actualPrice = rentalShop.calculatePrice(COMEDY, 5);
 
         assertThat(actualPrice, equalTo(expectedPrice));

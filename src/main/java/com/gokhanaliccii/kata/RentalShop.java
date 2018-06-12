@@ -13,7 +13,13 @@ import static com.gokhanaliccii.kata.MovieGenres.NEW;
  */
 public class RentalShop {
 
+    private MovieService movieService;
+
+    public RentalShop(MovieService movieService) {
+        this.movieService = movieService;
+    }
+
     public double calculatePrice(MovieGenres genres, int rentedDay) {
-        return genres.calculatePrice(rentedDay);
+        return movieService.calculatePrice(genres.getAlgorithm(), rentedDay);
     }
 }

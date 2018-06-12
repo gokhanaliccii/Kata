@@ -1,5 +1,7 @@
 package com.gokhanaliccii.kata;
 
+import java.util.function.BiFunction;
+
 public class MovieService {
 
     private final MovieRepository movieRepository;
@@ -9,7 +11,7 @@ public class MovieService {
     }
 
     double calculateNewPrice(int rentedDay) {
-        double price = rentedDay * movieRepository.getComedyPrice();
+        double price = rentedDay * movieRepository.getNewMoviePrice();
 
         if (rentedDay > 3) {
             price = price * 0.9;
@@ -21,8 +23,8 @@ public class MovieService {
     double calculateHorrorPrice(int rentedDay) {
         double price = rentedDay * movieRepository.getHorrorPrice();
 
-        if (rentedDay > 3) {
-            price = price * 0.9;
+        if (rentedDay > 5) {
+            price = price * 0.85;
         }
 
         return price;
@@ -38,5 +40,7 @@ public class MovieService {
         return price;
     }
 
-
+    double calculatePrice(BiFunction<MovieService, Integer, Double> algorithm, int rentedDay) {
+        return algorithm.apply(this, rentedDay);
+    }
 }

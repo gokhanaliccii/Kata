@@ -3,7 +3,7 @@ package com.gokhanaliccii.kata;
 import java.util.function.BiFunction;
 
 public enum MovieGenres {
-    NEW(MovieService::calculateComedyPrice),
+    NEW(MovieService::calculateNewPrice),
     HORROR(MovieService::calculateHorrorPrice),
     COMEDY(MovieService::calculateComedyPrice);
 
