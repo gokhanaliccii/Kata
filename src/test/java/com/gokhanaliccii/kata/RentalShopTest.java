@@ -24,6 +24,10 @@ import static org.junit.Assert.*;
  * New------ More Than 3 day Apply %10 discount
  * Horror--- More Than 5 day Apply %15 discount
  * Comedy--- More Than 2 day Apply %30 discount
+ * <p>
+ * [Step3]
+ * They want to update base price
+ * without new update
  */
 
 
