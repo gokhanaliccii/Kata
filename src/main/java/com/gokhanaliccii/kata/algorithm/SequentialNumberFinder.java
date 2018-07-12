@@ -13,22 +13,22 @@ public class SequentialNumberFinder {
             return new ArrayList<>();
 
         List<List<Integer>> consecutive = new LinkedList<>();
-
         List<Integer> tempList = new LinkedList<>();
 
-        for (int i = 0, j = i + 1; j < items.length; i++, j++) {
+        for (int currentIndex = 0, nextIndex = currentIndex + 1;
+             nextIndex < items.length;
+             currentIndex++, nextIndex++) {
 
-            if (items[i] == items[j] - 1) {
-                tempList.add(items[i]);
+            if (isConsecutive(items[currentIndex], items[nextIndex])) {
+                tempList.add(items[currentIndex]);
 
-                if (j == items.length - 1) {
-                    tempList.add(items[j]);
+                if (isLastIndex(nextIndex, items.length)) {
+                    tempList.add(items[nextIndex]);
                 }
-
             } else {
 
                 if (tempList.size() > 0)
-                    tempList.add(items[i]);
+                    tempList.add(items[currentIndex]);
 
                 if (tempList.size() >= limit) {
                     consecutive.add(tempList);
@@ -43,6 +43,14 @@ public class SequentialNumberFinder {
         }
 
         return consecutive;
+    }
+
+    private boolean isConsecutive(int num1, int num2) {
+        return num1 - (num2 - 1) == 0;
+    }
+
+    private boolean isLastIndex(int index, int size) {
+        return index + 1 == size;
     }
 
     private int[][] emptyArray() {
