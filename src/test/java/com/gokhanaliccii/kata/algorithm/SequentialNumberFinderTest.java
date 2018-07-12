@@ -1,9 +1,13 @@
 package com.gokhanaliccii.kata.algorithm;
 
-import org.hamcrest.Description;
-import org.hamcrest.TypeSafeMatcher;
+import com.gokhanaliccii.kata.util.IsNestedListSize;
 import org.hamcrest.core.Is;
+import org.hamcrest.core.IsCollectionContaining;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -14,27 +18,37 @@ public class SequentialNumberFinderTest {
         int[] items = new int[0];
 
         SequentialNumberFinder finder = new SequentialNumberFinder();
-        assertThat(finder.findSequentialNumbers(items, 3), Is.is(new IsArraySize(0)));
+        assertThat(finder.findSequentialNumbers(items, 3), Is.is(new IsNestedListSize(0)));
     }
 
+    @Test
+    public void should_SequentialNumbersReturnEmptyListWhenNotFoundEnoughSequential() {
+        int[] items = new int[]{1, 2, 6, 7, 9};
 
-    class IsArraySize extends TypeSafeMatcher<int[][]> {
-
-        private int expectedItemCount;
-
-        public IsArraySize(int expectedItems) {
-            this.expectedItemCount = expectedItems;
-        }
-
-        @Override
-        protected boolean matchesSafely(int[][] item) {
-            return item.length == expectedItemCount;
-        }
-
-        @Override
-        public void describeTo(Description description) {
-            description.appendText("Expected count :");
-            description.appendValue(expectedItemCount);
-        }
+        SequentialNumberFinder finder = new SequentialNumberFinder();
+        assertThat(finder.findSequentialNumbers(items, 3), Is.is(new IsNestedListSize(0)));
     }
+
+    @Test
+    public void should_FindSequentialNumbersListItemCountCorrectly() {
+        int[] items = new int[]{1, 2, 6, 7, 9};
+
+        SequentialNumberFinder finder = new SequentialNumberFinder();
+        assertThat(finder.findSequentialNumbers(items, 2), Is.is(new IsNestedListSize(2)));
+    }
+
+    @Test
+    public void should_FindSequentialPartsFromInputCorrectly() {
+        //int[] items = new int[]{ 17, 19, 20, 21};
+        int[] items = new int[]{1, 2, 6, 7, 8, 9, 11, 14, 17, 19, 20, 21};
+        List<List<Integer>> expectedItem = Arrays.asList(
+                Arrays.asList(6, 7, 8, 9),
+                Arrays.asList(19, 20, 21));
+
+        SequentialNumberFinder finder = new SequentialNumberFinder();
+        assertEquals(expectedItem, finder.findSequentialNumbers(items, 3));
+
+
+    }
+
 }
