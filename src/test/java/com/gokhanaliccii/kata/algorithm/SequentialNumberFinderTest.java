@@ -51,7 +51,7 @@ public class SequentialNumberFinderTest {
     }
 
     @Test
-    public void should_FindSequentialPartsFromInputCorrectly2() {
+    public void should_FindSequentialPartAtTheCenterOfInputCorrectly2() {
         int[] items = new int[]{1, 2, 6, 7, 8, 9, 11, 14, 17, 19, 20};
         List<List<Integer>> expectedItem = Arrays.asList(
                 Arrays.asList(6, 7, 8, 9));
@@ -60,7 +60,7 @@ public class SequentialNumberFinderTest {
     }
 
     @Test
-    public void should_FindSequentialPartsWhenInputSequentialCorrectly3() {
+    public void should_FindSequentialPartsWhenInputFullySequential() {
         int[] items = new int[]{1, 2, 3};
         List<List<Integer>> expectedItem = Arrays.asList(
                 Arrays.asList(1, 2, 3));
