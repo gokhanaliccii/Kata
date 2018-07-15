@@ -26,4 +26,21 @@ public class StringAlgorithm {
 
         return true;
     }
+
+    /**
+     * 1.2
+     * Write code to reverse a C-Style String
+     * (C-String means that “abcd” is represented as  ve characters,
+     * including the null character )
+     */
+    public String reverseIt(String input) {
+        char[] reversed = new char[input.length()];
+        int lastIndex = input.length() - 1;
+
+        for (int i = 0; i <= lastIndex; i++) {
+            reversed[i] = input.charAt(lastIndex - i);
+        }
+
+        return new String(reversed);
+    }
 }
