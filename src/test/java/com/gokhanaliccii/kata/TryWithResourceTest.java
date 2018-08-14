@@ -14,7 +14,7 @@ public class TryWithResourceTest {
     @Test
     public void should_ReadSampleFileCorrectly() {
         Reader reader = new Reader();
-        String actualText = reader.readText("sample.txt");
+        String actualText = reader.readText("sample2.txt");
 
         assertThat(actualText, IsEqual.equalTo("test"));
     }
@@ -22,19 +22,20 @@ public class TryWithResourceTest {
     static class Reader {
 
         String readText(String fileName) {
-            InputStream is = getClass().getClassLoader().getResourceAsStream(fileName);
+            InputStream is = null;
             ByteArrayOutputStream os = new ByteArrayOutputStream();
 
             byte[] buffer = new byte[1024];
 
             try {
+                is = getClass().getClassLoader().getResourceAsStream(fileName);
                 int len;
                 while ((len = is.read(buffer)) != -1) {
                     os.write(buffer, 0, len);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-            }finally {
+            } finally {
                 try {
                     is.close();
 
