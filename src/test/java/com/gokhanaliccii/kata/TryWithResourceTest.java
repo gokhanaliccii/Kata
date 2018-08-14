@@ -1,9 +1,8 @@
 package com.gokhanaliccii.kata;
 
-import org.hamcrest.MatcherAssert;
 import org.hamcrest.core.IsEqual;
-import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.io.*;
 
@@ -19,7 +18,18 @@ public class TryWithResourceTest {
         assertThat(actualText, IsEqual.equalTo("test"));
     }
 
-    static class Reader {
+    @Test
+    public void should_AutoCloseTriggerAutomatically() throws Exception {
+        Reader spy = Mockito.spy(new Reader());
+
+        try(Reader spyReader = spy){
+            spyReader.check();
+        }
+
+        Mockito.verify(spy).close();
+    }
+
+    static class Reader implements AutoCloseable {
 
         String readText(String fileName) {
 
@@ -39,5 +49,12 @@ public class TryWithResourceTest {
             }
         }
 
+        void check() {
+        }
+
+        @Override
+        public void close() throws Exception {
+            System.out.println("closed");
+        }
     }
 }
